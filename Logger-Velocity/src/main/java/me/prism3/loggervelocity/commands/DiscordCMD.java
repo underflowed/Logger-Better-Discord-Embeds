@@ -2,7 +2,7 @@ package me.prism3.loggervelocity.commands;
 
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
-import me.prism3.loggervelocity.Main;
+import me.prism3.loggervelocity.Logger;
 import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
 
@@ -10,7 +10,7 @@ import static me.prism3.loggervelocity.utils.Data.*;
 
 public class DiscordCMD implements SimpleCommand{
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @Override
     public void execute(Invocation invocation) {

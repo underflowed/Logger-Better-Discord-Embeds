@@ -1,6 +1,6 @@
 package me.prism3.logger.commands.subcommands;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.commands.SubCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -22,7 +22,7 @@ public class ToggleSpy implements SubCommand {
 
     public void perform(final CommandSender commandSender, final String[] args) {
 
-        final Main main = Main.getInstance();
+        final Logger main = Logger.getInstance();
 
         if (args.length < 3 || !args[1].equalsIgnoreCase("spy")) {
             commandSender.sendMessage(this.getSyntax());

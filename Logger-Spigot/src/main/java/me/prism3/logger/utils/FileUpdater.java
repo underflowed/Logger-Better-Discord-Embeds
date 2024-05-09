@@ -1,6 +1,6 @@
 package me.prism3.logger.utils;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -22,7 +22,7 @@ public class FileUpdater {
         final YamlConfiguration externalYamlConfig = YamlConfiguration.loadConfiguration(configFile);
 
         final InputStreamReader defConfigStream = new InputStreamReader(
-                Objects.requireNonNull(Main.getInstance().getResource(fileName)), StandardCharsets.UTF_8);
+                Objects.requireNonNull(Logger.getInstance().getResource(fileName)), StandardCharsets.UTF_8);
 
         final YamlConfiguration internalConfigFile = YamlConfiguration.loadConfiguration(defConfigStream);
 

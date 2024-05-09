@@ -1,6 +1,6 @@
 package me.prism3.logger.events.spy;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Data;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class OnSignSpy implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onSignSpy(final SignChangeEvent event) {

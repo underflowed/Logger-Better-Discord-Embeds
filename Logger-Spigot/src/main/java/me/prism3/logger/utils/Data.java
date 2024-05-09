@@ -1,6 +1,6 @@
 package me.prism3.logger.utils;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.enums.NmsVersions;
 import org.bukkit.Bukkit;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Data {
 
-    private static final Main main = Main.getInstance();
+    private static final Logger main = Logger.getInstance();
 
     // Date Format
     public static DateTimeFormatter dateTimeFormatter;
@@ -172,12 +172,18 @@ public class Data {
     private static NmsVersions versionChecker() {
 
         try {
+
+            final String bukkitVersion = Bukkit.getBukkitVersion();
+
+            if (bukkitVersion.equals("1.20.6-R0.1-SNAPSHOT"))
+                return NmsVersions.v1_20_R4;
+
             return NmsVersions.valueOf(Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3]);
 
-        } catch (final IllegalArgumentException e) {
+        } catch (final Exception e) {
 
-            Log.severe("Current version is unknown, using the latest known one.");
-            return NmsVersions.v1_21_R1;
+            Log.warning("Could not determine the seve version is unknown, using the latest known one.");
+            return NmsVersions.v1_20_R4;
         }
     }
 }

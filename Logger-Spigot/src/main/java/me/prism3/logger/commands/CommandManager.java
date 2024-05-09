@@ -1,6 +1,6 @@
 package me.prism3.logger.commands;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.commands.subcommands.*;
 import me.prism3.logger.utils.Data;
 import org.bukkit.ChatColor;
@@ -33,7 +33,7 @@ public class CommandManager implements TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        final Main main = Main.getInstance();
+        final Logger main = Logger.getInstance();
 
         if (!sender.hasPermission(loggerStaff)) {
 

@@ -1,6 +1,6 @@
 package me.prism3.logger.events.plugindependent;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.api.VaultUtil;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class OnVault implements Listener, Runnable {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
     private final HashMap<UUID, Double> players = new HashMap<>();
     private final Economy econ = VaultUtil.getVault();
 

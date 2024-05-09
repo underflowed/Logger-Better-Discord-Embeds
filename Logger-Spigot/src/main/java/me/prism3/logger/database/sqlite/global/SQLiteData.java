@@ -1,6 +1,6 @@
 package me.prism3.logger.database.sqlite.global;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.api.*;
 import me.prism3.logger.utils.Log;
 import me.prism3.logger.utils.enums.NmsVersions;
@@ -22,7 +22,7 @@ import static me.prism3.logger.utils.Data.version;
 
 public class SQLiteData {
 
-    private static final Main plugin = Main.getInstance();
+    private static final Logger plugin = Logger.getInstance();
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss:SSSXXX");
 

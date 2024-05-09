@@ -1,6 +1,6 @@
 package me.prism3.logger.api;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import org.bukkit.plugin.Plugin;
 
 public class PlaceHolderAPIUtil {
@@ -9,6 +9,6 @@ public class PlaceHolderAPIUtil {
 
     public static Plugin getPlaceHolderAPI() {
 
-        return Main.getInstance().getServer().getPluginManager().getPlugin("PlaceholderAPI");
+        return Logger.getInstance().getServer().getPluginManager().getPlugin("PlaceholderAPI");
     }
 }

@@ -1,6 +1,6 @@
 package me.prism3.logger.events;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.events.spy.OnAnvilSpy;
@@ -27,7 +27,10 @@ import java.util.Objects;
 
 public class OnAnvil implements Listener {
 
-private final Main main = Main.getInstance();
+private final Logger main = Logger.getInstance();
+
+
+
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(final InventoryClickEvent event) {
@@ -49,6 +52,9 @@ private final Main main = Main.getInstance();
             final Inventory inv = event.getInventory();
 
             if (inv instanceof AnvilInventory) {
+
+                if (player.getLevel() < ((AnvilInventory) inv).getRepairCost())
+                    return; // Fixes the case where the player has no xp but still can trigger the log
 
                 final InventoryView view = event.getView();
 

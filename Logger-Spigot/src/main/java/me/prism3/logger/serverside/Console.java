@@ -1,6 +1,6 @@
 package me.prism3.logger.serverside;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.utils.Data;
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class Console implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onConsoleCommand(final ServerCommandEvent event) {

@@ -1,13 +1,13 @@
 package me.prism3.logger.database.external;
 
 import com.zaxxer.hikari.HikariDataSource;
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Data;
 import me.prism3.logger.utils.Log;
 
 public class External {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     private String jdbc;
     private static final String DATATYPE = Data.dbType.toLowerCase();

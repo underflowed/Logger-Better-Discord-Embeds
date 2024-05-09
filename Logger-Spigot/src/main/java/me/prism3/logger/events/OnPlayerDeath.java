@@ -1,6 +1,6 @@
 package me.prism3.logger.events;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.utils.BedrockChecker;
@@ -33,7 +33,7 @@ import static me.prism3.logger.utils.Data.isPlayerDeathBackup;
 
 public class OnPlayerDeath implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
     private final PlayerFolder playerDeathBackup = new PlayerFolder();
 
     @EventHandler(priority = EventPriority.HIGHEST)

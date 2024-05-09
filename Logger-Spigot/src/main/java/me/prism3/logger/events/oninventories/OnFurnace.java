@@ -1,6 +1,6 @@
 package me.prism3.logger.events.oninventories;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.utils.BedrockChecker;
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class OnFurnace implements Listener {
 
-    public final Main main = Main.getInstance();
+    public final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInv(final FurnaceExtractEvent event) {

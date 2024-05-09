@@ -30,7 +30,6 @@ import me.prism3.loggervelocity.utils.Data;
 import me.prism3.loggervelocity.utils.FileHandler;
 import me.prism3.loggervelocity.utils.Messages;
 import org.bstats.velocity.Metrics;
-import org.slf4j.Logger;
 
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
@@ -38,13 +37,13 @@ import java.util.concurrent.TimeUnit;
 import static me.prism3.loggervelocity.utils.Data.*;
 
 @Plugin(id = "logger-velocity", name = "Logger", version = "1.7.5", authors = {"prism3 & thelooter & sidna"})
-public class Main{
+public class Logger {
 
     private static ProxyServer server;
-    private final Logger logger;
+    private final org.slf4j.Logger logger;
     private final Metrics.Factory metricsFactory;
 
-    private static Main instance;
+    private static Logger instance;
     private ConfigManager config;
 
     private Messages messages;
@@ -61,9 +60,9 @@ public class Main{
     private Path folder;
 
     @Inject
-    public Main(ProxyServer server, Logger logger, Metrics.Factory metricsFactory) {
+    public Logger(ProxyServer server, org.slf4j.Logger logger, Metrics.Factory metricsFactory) {
 
-        Main.server = server;
+        Logger.server = server;
         this.logger = logger;
         this.metricsFactory = metricsFactory;
 
@@ -178,11 +177,11 @@ public class Main{
         }
     }
 
-    public static Main getInstance() { return instance; }
+    public static Logger getInstance() { return instance; }
 
     public static ProxyServer getServer() { return server; }
 
-    public Logger getLogger() { return this.logger; }
+    public org.slf4j.Logger getLogger() { return this.logger; }
 
     public Path getFolder() { return this.folder; }
 

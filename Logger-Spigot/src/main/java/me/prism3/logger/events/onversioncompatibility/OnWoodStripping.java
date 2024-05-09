@@ -1,6 +1,6 @@
 package me.prism3.logger.events.onversioncompatibility;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.utils.BedrockChecker;
@@ -29,7 +29,7 @@ import static me.prism3.logger.utils.Data.version;
 
 public class OnWoodStripping implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
     private final List<Material> logs;
     private final List<Material> axes;
 

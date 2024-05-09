@@ -1,6 +1,6 @@
 package me.prism3.logger.events.oncommands;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.events.spy.OnCommandSpy;
@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class OnCommand implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerCmd(final PlayerCommandPreprocessEvent event) {

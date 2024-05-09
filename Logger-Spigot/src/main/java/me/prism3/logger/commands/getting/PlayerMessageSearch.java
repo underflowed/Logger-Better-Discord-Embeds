@@ -1,6 +1,6 @@
 package me.prism3.logger.commands.getting;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class PlayerMessageSearch {
 
   public static Connection getNewConnection() throws SQLException {
-    return Main.getInstance().getExternal().getHikari().getConnection();
+    return Logger.getInstance().getExternal().getHikari().getConnection();
   }
 
   private final CommandSender sender;

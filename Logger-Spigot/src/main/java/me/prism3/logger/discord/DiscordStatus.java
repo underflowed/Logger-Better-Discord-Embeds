@@ -1,6 +1,6 @@
 package me.prism3.logger.discord;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Log;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Activity;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DiscordStatus {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
     private final JDA jda;
 
     private int currentIndex = 0;

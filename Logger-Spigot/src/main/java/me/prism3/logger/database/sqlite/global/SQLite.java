@@ -1,6 +1,6 @@
 package me.prism3.logger.database.sqlite.global;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Log;
 
 import java.io.File;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class SQLite {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     private Connection connection;
 

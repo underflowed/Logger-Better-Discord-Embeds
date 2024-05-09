@@ -1,6 +1,6 @@
 package me.prism3.logger.events;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
 import me.prism3.logger.utils.BedrockChecker;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 public class OnItemPickup implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onItemPick(final PlayerPickupItemEvent event) {

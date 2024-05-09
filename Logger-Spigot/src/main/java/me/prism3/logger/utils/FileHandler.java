@@ -1,6 +1,6 @@
 package me.prism3.logger.utils;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.api.*;
 import me.prism3.logger.utils.enums.NmsVersions;
 
@@ -120,7 +120,7 @@ public class FileHandler {
     private static File woodStrippingFile;
 
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     public FileHandler(File dataFolder) {
 

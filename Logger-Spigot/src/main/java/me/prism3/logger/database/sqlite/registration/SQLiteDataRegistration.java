@@ -1,6 +1,6 @@
 package me.prism3.logger.database.sqlite.registration;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 public class SQLiteDataRegistration {
 
-    private static final Main plugin = Main.getInstance();
+    private static final Logger plugin = Logger.getInstance();
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss:SSSXXX");
 

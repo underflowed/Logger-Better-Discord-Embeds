@@ -1,6 +1,6 @@
 package me.prism3.logger.discord;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Log;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 public class Discord {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     private JDA jda;
 

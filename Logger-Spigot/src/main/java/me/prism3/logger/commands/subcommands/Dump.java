@@ -2,7 +2,7 @@ package me.prism3.logger.commands.subcommands;
 
 import com.google.common.io.Files;
 import io.github.cdimascio.dotenv.Dotenv;
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.commands.SubCommand;
 import me.prism3.logger.utils.Pastebin;
 import org.bukkit.ChatColor;
@@ -20,7 +20,7 @@ import static me.prism3.logger.utils.Data.selectedLang;
 
 public class Dump implements SubCommand {
 
-    private final File dataFolder = Main.getInstance().getDataFolder();
+    private final File dataFolder = Logger.getInstance().getDataFolder();
 
     @Override
     public String getName() { return "dump"; }

@@ -1,7 +1,7 @@
 package me.prism3.logger.events;
 
 import fr.xephi.authme.api.v3.AuthMeApi;
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.api.AuthMeUtil;
 import me.prism3.logger.database.external.ExternalData;
 import me.prism3.logger.database.sqlite.global.SQLiteData;
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class OnPlayerTeleport implements Listener {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onTeleport(final PlayerTeleportEvent event) {

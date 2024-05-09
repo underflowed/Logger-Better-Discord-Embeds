@@ -1,6 +1,6 @@
 package me.prism3.logger.database.external;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Data;
 import me.prism3.logger.utils.Log;
 
@@ -37,7 +37,7 @@ public class ExternalUpdater {
   }
 
   public static void updater() {
-    final Main main = Main.getInstance();
+    final Logger main = Logger.getInstance();
 
     if (Data.isExternal && main.getExternal().isConnected()) {
       // Primary Key removal and adding method

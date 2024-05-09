@@ -1,6 +1,6 @@
 package me.prism3.logger.commands.subcommands;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.commands.SubCommand;
 import me.prism3.logger.utils.Data;
 import org.bukkit.ChatColor;
@@ -13,7 +13,7 @@ import static me.prism3.logger.utils.Data.pluginPrefix;
 
 public class Reload implements SubCommand {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
 
     @Override
     public String getName() {

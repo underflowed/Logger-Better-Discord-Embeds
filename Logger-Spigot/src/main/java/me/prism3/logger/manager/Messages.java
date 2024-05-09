@@ -1,6 +1,6 @@
 package me.prism3.logger.manager;
 
-import me.prism3.logger.Main;
+import me.prism3.logger.Logger;
 import me.prism3.logger.utils.Log;
 import me.prism3.logger.utils.enums.Languages;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,7 +16,7 @@ import static me.prism3.logger.utils.Data.*;
 
 public class Messages {
 
-    private final Main main = Main.getInstance();
+    private final Logger main = Logger.getInstance();
     private FileConfiguration messagesFile;
     private final Set<String> langFiles = Stream.of(Languages.values()).map(Languages::getMessageFile).collect(Collectors.toSet());
 
