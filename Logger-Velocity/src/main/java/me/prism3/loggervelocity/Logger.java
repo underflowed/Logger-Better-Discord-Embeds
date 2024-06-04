@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 import static me.prism3.loggervelocity.utils.Data.*;
 
-@Plugin(id = "logger-velocity", name = "Logger", version = "1.7.5", authors = {"prism3 & thelooter & sidna"})
+@Plugin(id = "logger-velocity", name = "Logger", version = "1.8.0.15", authors = {"prism3 & sidna"})
 public class Logger {
 
     private static ProxyServer server;
