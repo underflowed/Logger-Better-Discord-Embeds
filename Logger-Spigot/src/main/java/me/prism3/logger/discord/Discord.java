@@ -7,10 +7,20 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
+import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.awt.*;
 
 public class Discord {
 
+
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(Discord.class);
     private final Logger main = Logger.getInstance();
+
 
     private JDA jda;
 
@@ -60,7 +70,6 @@ public class Discord {
     private TextChannel woodStrippingChannel;
 
     public void run() {
-
         if (this.main.getDiscordFile().get().getBoolean("Discord.Enable")) {
 
             final String botToken = this.main.getDiscordFile().get().getString("Discord.Bot-Token");
@@ -435,18 +444,18 @@ public class Discord {
 
     public void staffChat(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.staffChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.staffChannel, this.main.getDiscordFile().getUrl("Staff"));
 
     }
 
     public void playerChat(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerChatChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerChatChannel, this.main.getDiscordFile().getUrl("Player-Chat"));
     }
 
     public void playerCommand(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerCommandsChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerCommandsChannel, this.main.getDiscordFile().getUrl("Player-Commands"));
     }
 
     public void console(String content, boolean contentInAuthorLine) {
@@ -473,47 +482,47 @@ public class Discord {
 
     public void playerSignText(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerSignTextChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerSignTextChannel, this.main.getDiscordFile().getUrl("Player-Sign-Text"));
     }
 
     public void playerJoin(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerJoinChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerJoinChannel, this.main.getDiscordFile().getUrl("Player-Join"));
     }
 
     public void playerLeave(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerLeaveChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerLeaveChannel, this.main.getDiscordFile().getUrl("Player-Leave"));
     }
 
     public void playerKick(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerKickChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerKickChannel, this.main.getDiscordFile().getUrl("Player-Kick"));
     }
 
     public void playerDeath(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerDeathChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerDeathChannel, this.main.getDiscordFile().getUrl("Player-Death"));
     }
 
     public void playerTeleport(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerTeleportChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerTeleportChannel, this.main.getDiscordFile().getUrl("Player-Teleport"));
     }
 
     public void playerLevel(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.playerLevelChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.playerLevelChannel, this.main.getDiscordFile().getUrl("Player-Level"));
     }
 
     public void blockPlace(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.blockPlaceChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.blockPlaceChannel, this.main.getDiscordFile().getUrl("Block-Place"));
     }
 
     public void blockBreak(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.blockBreakChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.blockBreakChannel, this.main.getDiscordFile().getUrl("Block-Break"));
     }
 
     public void portalCreation(String content, boolean contentInAuthorLine) {
@@ -529,17 +538,17 @@ public class Discord {
 
     public void bucketFill(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.bucketFillChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.bucketFillChannel, this.main.getDiscordFile().getUrl("Bucket-Fill"));
     }
 
     public void bucketEmpty(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.bucketEmptyChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.bucketEmptyChannel, this.main.getDiscordFile().getUrl("Bucket-Empty"));
     }
 
     public void anvil(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.anvilChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.anvilChannel, this.main.getDiscordFile().getUrl("Anvil"));
     }
 
     public void tps(String content, boolean contentInAuthorLine) {
@@ -599,67 +608,67 @@ public class Discord {
 
     public void itemDrop(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.itemDropChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.itemDropChannel, this.main.getDiscordFile().getUrl("Item-Drop"));
     }
 
     public void enchanting(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.enchantingChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.enchantingChannel, this.main.getDiscordFile().getUrl("Enchanting"));
     }
 
     public void bookEditing(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.bookEditingChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.bookEditingChannel, this.main.getDiscordFile().getUrl("Book-Editing"));
     }
 
     public void afk(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.afkChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.afkChannel, this.main.getDiscordFile().getUrl("AFK"));
     }
 
     public void wrongPassword(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.wrongPasswordChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.wrongPasswordChannel, this.main.getDiscordFile().getUrl("Wrong-Password"));
     }
 
     public void itemPickup(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.itemPickupChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.itemPickupChannel, this.main.getDiscordFile().getUrl("Item-Pickup"));
     }
 
     public void furnace(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.furnaceChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.furnaceChannel, this.main.getDiscordFile().getUrl("Furnace"));
     }
 
     public void gameMode(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.gameModeChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.gameModeChannel, this.main.getDiscordFile().getUrl("Game-Mode"));
     }
 
     public void playerCraft(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.craftChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.craftChannel, this.main.getDiscordFile().getUrl("Player-Craft"));
     }
 
     public void vault(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.vaultChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.vaultChannel, this.main.getDiscordFile().getUrl("Vault"));
     }
 
     public void playerRegistration(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.registrationChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.registrationChannel, this.main.getDiscordFile().getUrl("Player-Registration"));
     }
 
     public void primedTNT(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.primedTNTChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.primedTNTChannel, this.main.getDiscordFile().getUrl("Primed-TNT"));
     }
 
     public void chestInteraction(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.chestInteractionChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.chestInteractionChannel, this.main.getDiscordFile().getUrl("Chest-Interaction"));
     }
 
     public void liteBans(String content, boolean contentInAuthorLine) {
@@ -686,28 +695,60 @@ public class Discord {
 
     public void woodStripping(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.woodStrippingChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.woodStrippingChannel, this.main.getDiscordFile().getUrl("Wood-Stripping"));
     }
 
     public void entityDeath(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.entityDeathChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.entityDeathChannel, this.main.getDiscordFile().getUrl("Entity-Death"));
     }
 
     public void signChange(Player player, String content, boolean contentInAuthorLine) {
 
-        this.discordUtil(player, content, contentInAuthorLine, this.signChangeChannel);
+        this.discordUtil(player, content, contentInAuthorLine, this.signChangeChannel, this.main.getDiscordFile().getUrl("Sign-Change"));
     }
 
-    private void discordUtil(Player player, String content, boolean contentInAuthorLine, TextChannel channel) {
+    private void discordUtil(Player player, String content, boolean contentInAuthorLine, TextChannel channel, String embedImage) {
         if (channel == null) return;
-
         final EmbedBuilder builder = new EmbedBuilder().setAuthor(contentInAuthorLine ? content : player.getName(),
                 null, "https://visage.surgeplay.com/face/" + player.getUniqueId() + ".png?no=cape,ears,shadow");
 
-        if (!contentInAuthorLine) builder.setDescription(content);
+        String functionType = "Unknown";
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        if(stackTraceElements.length > 3) {
+            StackTraceElement callerElement = stackTraceElements[3];
+            functionType = callerElement.getMethodName(); //event type jank
+        }
 
-        channel.sendMessage(builder.build()).queue();
+        String time = "Unknown", world = "Unknown";
+        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = pattern.matcher(content); //regex garbage
+        if (matcher.find()) {
+            time = matcher.group(1);
+        }
+        if (matcher.find()) {
+            world = matcher.group(1);
+        }
+
+        if(Objects.equals(world, "Unknown")) world = player.getWorld().getName();
+
+        String EmbedColor = Objects.requireNonNull(this.main.getDiscordFile().get().getString("Discord.EmbedColor"));
+        //debug main.getLogger().info("Embed Color: " + EmbedColor);
+        content = content.replaceAll("\\[(.*?)\\]", "");
+        try {
+            if (!contentInAuthorLine) builder
+                    .setThumbnail(embedImage)
+                    .setColor(Color.decode(EmbedColor))
+                    .setTitle("Logged Event of type: " + functionType)
+                    .addField("Time", time, false)
+                    .addField("World", world, false)
+                    .setDescription(content);
+
+
+            channel.sendMessageEmbeds(builder.build()).queue();
+        } catch(Exception e) {
+            System.out.println(embedImage + " :submitted URL");
+        }
     }
 
     public void disconnect() {

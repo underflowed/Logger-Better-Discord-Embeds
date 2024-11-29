@@ -11,9 +11,10 @@ public class DiscordFile {
 
     private File theDiscordFile;
     private FileConfiguration file;
-
+    private DiscordEmbedImages embedImages;
+    
     public void setup() {
-
+        
         this.theDiscordFile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("Logger")).getDataFolder(), "discord.yml");
 
         if (!this.theDiscordFile.exists()) {
@@ -23,9 +24,13 @@ public class DiscordFile {
         }
 
         this.file = YamlConfiguration.loadConfiguration(this.theDiscordFile);
-
+        this.embedImages = new DiscordEmbedImages(this.file);
     }
 
+
+    String getUrl(String key) {
+        return this.embedImages.getUrl(key);
+    }
     public FileConfiguration get() { return this.file; }
 
     public void reload() {
