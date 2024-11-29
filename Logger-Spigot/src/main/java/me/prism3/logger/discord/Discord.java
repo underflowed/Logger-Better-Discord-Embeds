@@ -7,9 +7,16 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.entity.Player;
+import org.slf4j.LoggerFactory;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.awt.*;
 
 public class Discord {
 
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(Discord.class);
     private final Logger main = Logger.getInstance();
 
     private JDA jda;
@@ -701,13 +708,35 @@ public class Discord {
 
     private void discordUtil(Player player, String content, boolean contentInAuthorLine, TextChannel channel) {
         if (channel == null) return;
-
         final EmbedBuilder builder = new EmbedBuilder().setAuthor(contentInAuthorLine ? content : player.getName(),
                 null, "https://visage.surgeplay.com/face/" + player.getUniqueId() + ".png?no=cape,ears,shadow");
 
-        if (!contentInAuthorLine) builder.setDescription(content);
+        String time = null;
+        String world = null;
+        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = pattern.matcher(content);
+        if (matcher.find()) {
+            time = matcher.group(1);
+        }
+        if (matcher.find()) {
+            world = matcher.group(1);
+        }
+        content = content.replaceAll("\\[(.*?)\\]", "");
+        String functionType = "Unknown";
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        if(stackTraceElements.length > 3) {
+            StackTraceElement callerElement = stackTraceElements[3];
+            functionType = callerElement.getMethodName();
+        }
+        if (!contentInAuthorLine) builder
+                .setColor(Color.MAGENTA)
+                .setTitle("Logged Event of type: " + functionType)
+                .addField("Time" , time , false)
+                .addField("World", world, false)
+                .setDescription(content);
 
-        channel.sendMessage(builder.build()).queue();
+
+        channel.sendMessageEmbeds(builder.build()).queue();
     }
 
     public void disconnect() {
