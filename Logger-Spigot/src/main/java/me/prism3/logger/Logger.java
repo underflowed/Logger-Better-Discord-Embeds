@@ -3,7 +3,6 @@ package me.prism3.logger;
 
 import com.jeff_media.updatechecker.UpdateCheckSource;
 import com.jeff_media.updatechecker.UpdateChecker;
-import com.jeff_media.updatechecker.UserAgentBuilder;
 import me.prism3.logger.api.*;
 import me.prism3.logger.commands.CommandManager;
 import me.prism3.logger.commands.subcommands.PlayerInventory;
@@ -30,6 +29,8 @@ import me.prism3.logger.utils.*;
 import me.prism3.logger.utils.enums.NmsVersions;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 import static me.prism3.logger.utils.Data.*;
 
@@ -170,7 +171,7 @@ public class Logger extends JavaPlugin {
 
     private void commandsInitializer() {
 
-        this.getCommand("logger").setExecutor(new CommandManager());
+        Objects.requireNonNull(this.getCommand("logger")).setExecutor(new CommandManager());
 //        this.getCommand("loggerget").setExecutor(new Chat());
 
     }

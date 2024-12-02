@@ -1,63 +1,93 @@
 # Discord Bridge Configuration for Logger Plugin [ Bukkit Version]
 # Need Support Join the Discord Server: https://discord.gg/MfR5mcpVfX
 # Config: 1.8.0.15
+
 # Leaving Channel-ID empty will disable the Channel
+#Please wrap color hexcodes in '' ex: '#FF0000' as # is a comment in yml files
 Discord:
+  EmbedColor: '#FF0000'
   Enable: false
   Bot-Token: BOT_KEY
   Staff:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Chat:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Commands:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Sign-Text:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Join:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Leave:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Kick:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Death:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Teleport:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Player-Level:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Block-Place:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Block-Break:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Bucket-Fill:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Bucket-Empty:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Anvil:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Item-Pickup:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Item-Drop:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Enchanting:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Book-Editing:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Furnace:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Game-Mode:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Craft:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Registration:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Primed-TNT:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Chest-Interaction:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Entity-Death:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   Sign-Change:
+    EmbedImage: 'URL_HERE'
     Channel-ID: 'CHANNEL_ID'
   # Server Side Checkers
   Server-Side:
